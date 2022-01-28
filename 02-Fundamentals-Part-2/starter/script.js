@@ -44,6 +44,7 @@ console.log(total);
 
 // Third Codding challenge OBJECTS METHODS >>>>>>>>>>>>>>>>>>>>>>
 
+/*
 let mark = {
     firstName : "Mark",
     lastName : 'Miller',
@@ -83,3 +84,39 @@ if (mark.bmi > john.bmi) {
     console.log("its a draw ");
 }
 
+*/
+
+// 4 CODDING CHALLENGE LOOPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+const calcTip = function (bill){
+    if (bill >= 50 && bill <=300){
+        return bill * 0.15;
+    }else{
+        return bill * 0.2;
+    }
+ }
+
+let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tips = [];
+let total = [];
+
+
+for(let i = 0; i < bills.length; i ++ ){
+    const tip = calcTip(bills[i]);
+    tips.push(tip);
+    total.push(tip + bills[i]);
+}
+
+console.log(bills,tips,total);
+
+
+
+const calcAvarage = function(arr){
+    let sum = 0;
+    for(i = 0; i < arr.length; i ++){
+        sum += arr[i];
+    }
+    return sum / arr.length;
+}
+console.log(calcAvarage(total));
+console.log(calcAvarage(tips));
