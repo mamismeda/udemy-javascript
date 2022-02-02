@@ -17,11 +17,27 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
-const scores = [0, 0];
+let scores, currentScore, activePlayer, playing;
 
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+
+const init = function () {
+   scores = [0, 0];
+   currentScore = 0;
+   activePlayer = 0;
+   playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+
+  diceEl.classList.add('hidden');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+};
+init();
 
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -63,7 +79,7 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     //2. check if players score its >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
       //finish the game
       playing = false;
       diceEl.classList.add('hidden');
@@ -79,3 +95,5 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+btnNew.addEventListener('click', init);
+
