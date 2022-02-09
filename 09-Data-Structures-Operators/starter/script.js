@@ -39,8 +39,82 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`here is your delicius pasta with ${ing1}, ${ing2}, ${ing3}`);
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient, otherIngredients);
+  },
 };
 
+
+console.log( '------OR --------');
+
+// Use ANY data type, return Any data type, short-circuiting>>>>>>>>>
+console.log(3 || 'jonas');
+console.log('' || 'jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'hello' || 23);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('------AND-------');
+console.log(0 && 'jonas');
+console.log(7 && 'jonas');
+
+console.log('hello' && 23 && null && 'jonas');
+
+//practical example>>>>>>>>>>>>>>>>>>>>
+if(restaurant.orderPizza){
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+
+/*
+//Destructruing >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//SPREAD. because on right side of =
+const arr = [1, 2, ...[3, 4]];
+
+//Rest, because on left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+//Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3, 4, 2, 6, 7);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives');
+restaurant.orderPizza('mushrooms');
+*/
+
+
+
+/*
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 console.log(badNewArr);
@@ -56,17 +130,18 @@ console.log(newMenu);
 // Copy array
 
 const mainMenuCopy = [...restaurant.mainMenu];
+*/
 
 // Join 2 arays or more
 
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menu);
 
 // Iterables : arrays, strings, maps, sets. NOT objects
 
-const str = 'jonas';
-const letters = [...str, '', 's'];
-console.log(letters);
+// const str = 'jonas';
+// const letters = [...str, '', 's'];
+// console.log(letters);
 //real world example
 // const ingredients = [prompt("let's make pasta! ingredient 1"),prompt("let's make pasta! ingredient 1"),
 // prompt("let's make pasta! ingredient 1")];
@@ -75,17 +150,15 @@ console.log(letters);
 // restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 // restaurant.orderPasta(...ingredients);
 
-
 // Objects
 
-const newRestaurant = {foundIn : 1998, ...restaurant, founder : 'Guiseppe'};
-console.log(newRestaurant);
+// const newRestaurant = {foundIn : 1998, ...restaurant, founder : 'Guiseppe'};
+// console.log(newRestaurant);
 
-const restaurantCopy = {...restaurant};
-restaurantCopy.name = 'Ristorante Roma';
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
-
+// const restaurantCopy = {...restaurant};
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
 
 /*
 //////////////////////////////////////////////////////////
