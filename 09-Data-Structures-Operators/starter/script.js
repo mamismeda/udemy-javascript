@@ -5,45 +5,57 @@
 // '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+/*
 
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
-//   order: function (starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
+const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-//   orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
-//     console.log(`order recieved ! ${this.starterMenu[starterIndex]}
-//     and ${this.mainMenu[mainIndex]} will be delivered to ${address} at
-//     ${time}`);
-//   },
+const openingHours = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekDays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekDays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+console.log(openingHours);
 
-//   orderPasta: function (ing1, ing2, ing3) {
-//     console.log(`here is your delicius pasta with ${ing1}, ${ing2}, ${ing3}`);
-//   },
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  //ES 6 method
+  openingHours,
 
-//   orderPizza: function (mainIngredient, ...otherIngredients) {
-//     console.log(mainIngredient, otherIngredients);
-//   },
-// };
+  //!!!!!!!!!!
+
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery({ starterIndex, mainIndex, time, address }) {
+    console.log(`order recieved ! ${this.starterMenu[starterIndex]}     and ${this.mainMenu[mainIndex]} will be delivered to ${address} at
+     ${time}`);
+  },
+
+  orderPasta(ing1, ing2, ing3) {
+    console.log(`here is your delicius pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient, otherIngredients);
+  },
+};
+
+console.log(restaurnt.openingHours.mon);
+*/
 
 // const rest1 = {
 //   name: 'Capri',
@@ -327,7 +339,7 @@ const {odds: {team1, x:draw, team2}} = game;
 
 //6
 const printGoals = function (...players) {
-  console.log(`${players.length} goals were scored`);
+  // console.log(`${players.length} goals were scored`);
 
 }
 printGoals('Davies', 'Muller', 'Lewandowski','Kimich');
@@ -335,8 +347,24 @@ printGoals('Davies', 'Muller');
 printGoals(...game.scored);
 
 // 7
-team1 < team2 && console.log('team 1 won');
-team1 > team2 && console.log('team 1 won');
+// team1 < team2 && console.log('team 1 won');
+// team1 > team2 && console.log('team 1 won');
+
+for(const item of game.scored){
+  console.log(`goal 1 : ${item}`);
+}
+
+let prom = Object.values(game.odds);
+let sum = 0;
+for(const el of prom){
+  console.log(`odd of ${sum + el/ prom.length}`);
+}
+
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
 
 
 
