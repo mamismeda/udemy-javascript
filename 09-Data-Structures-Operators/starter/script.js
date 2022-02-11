@@ -350,22 +350,41 @@ printGoals(...game.scored);
 // team1 < team2 && console.log('team 1 won');
 // team1 > team2 && console.log('team 1 won');
 
-for(const item of game.scored){
-  console.log(`goal 1 : ${item}`);
-}
+// MY TRY>>>>>>>>>>>>>>>>>>>>>
+ 
+// for(const item of game.scored){
+//   console.log(`goal 1 : ${item}`);
+// }
 
-let prom = Object.values(game.odds);
-let sum = 0;
-for(const el of prom){
-  console.log(`odd of ${sum + el/ prom.length}`);
-}
+// let prom = Object.values(game.odds);
+// let sum = 0;
+// for(const el of prom){
+//   console.log(`odd of ${sum + el/ prom.length}`);
+// }
 
-const scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-}
-console.log(scorers);
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+// console.log(scorers);
 
+//TEACHERS TRY >>>>>>>>>>>>>>>>>
+//1
+for (const [i, player] of game.scored.entries())
+console.log(`Goal ${i+1} : ${player}`);
+
+//2
+ let prom = Object.values(game.odds);
+ let sum = 0;
+ for(const el of prom){
+   console.log(`${sum + el/ prom.length}`);
+ }
+
+ //3
+ for(const [team, odd] of Object.entries(game.odds)){
+    const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`
+     console.log(`Odd of ${teamStr} ${odd}`);
+ }
 
 
 
