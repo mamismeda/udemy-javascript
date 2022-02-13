@@ -277,7 +277,7 @@ console.log(o, c);
 // Default values
 // const [p=1, q=1, r=1] = [8, 9];
 // console.log(p, q, r);
-
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -342,9 +342,10 @@ const printGoals = function (...players) {
   // console.log(`${players.length} goals were scored`);
 
 }
-printGoals('Davies', 'Muller', 'Lewandowski','Kimich');
-printGoals('Davies', 'Muller');
-printGoals(...game.scored);
+*/
+// printGoals('Davies', 'Muller', 'Lewandowski','Kimich');
+// printGoals('Davies', 'Muller');
+// printGoals(...game.scored);
 
 // 7
 // team1 < team2 && console.log('team 1 won');
@@ -370,6 +371,7 @@ printGoals(...game.scored);
 
 //TEACHERS TRY >>>>>>>>>>>>>>>>>
 //1
+/*
 for (const [i, player] of game.scored.entries())
 console.log(`Goal ${i+1} : ${player}`);
 
@@ -385,7 +387,7 @@ console.log(`Goal ${i+1} : ${player}`);
     const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`
      console.log(`Odd of ${teamStr} ${odd}`);
  }
-
+*/
 
 
 /*
@@ -455,3 +457,43 @@ let printGoals = function () {
 
 }
 */
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+  ]);
+
+// const events = new Set(gameEvents.values());
+// events.delete('Yellow card');
+// console.log(events);
+// console.log(`An event happend, on avarage ${90/gameEvents.length}`);
+// for(const item of gameEvents){
+//  console.log(`${item}`);
+// }
+
+//1
+const events =[...new Set(gameEvents.values())];
+
+//2
+gameEvents.delete(64);
+
+//3
+const time = [...gameEvents.keys()].pop();
+console.log(`An event happend,on avarage,every ${time / gameEvents.size }`);
+
+//4
+
+for(const [min,event] of gameEvents){
+  const half = min <= 45 ? 'First' : 'Second';
+  console.log(`[${half} Half] : ${min}: ${event}`);
+}
+
+
