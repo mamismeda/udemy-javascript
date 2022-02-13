@@ -457,6 +457,8 @@ let printGoals = function () {
 
 }
 */
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 const gameEvents = new Map([
   [17, '⚽ GOAL'],
   [36, '🔁 Substitution'],
@@ -496,4 +498,117 @@ for(const [min,event] of gameEvents){
   console.log(`[${half} Half] : ${min}: ${event}`);
 }
 
+*/
 
+
+const airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//FIx capitalization in name >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+const passenger ='jOnAS'; // Jonas
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].
+toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Compairing email >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.Io \n';
+
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// replaceing >>>>>>>>>>>>>>>>>>>>>>>>>>
+
+const priceGB = '288,97 $';
+const priceUS = priceGB.replace('$', 'ლ').replace(',', '.');
+console.log(priceUS);
+
+const announcement = 'All passengers come to bording door 23. Boarding 23 door';
+
+console.log(announcement.replace('door', ' gates'));
+// console.log(announcement.replaceAll('door', ' gates'));
+
+console.log(announcement.replace(/door/g, ' gates'));
+
+//Booleans >>>>>>>>>>>>>>>>>
+
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('A3'));
+
+if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+  console.log('part of the new airbus family');
+}
+
+//Practice exercies
+
+const checkbaggage = function (items) {
+   
+   const baggage = items.toLowerCase();
+   if(baggage.includes('knife') || baggage.includes('gun')){
+     console.log('You are Not allowed on board');
+   }else{
+     console.log('Welcome aboard!');
+   }
+
+}
+
+
+checkbaggage('I have a laptop, Food and a pocket Knife');
+checkbaggage('Socks and camera');
+checkbaggage('got some snacks and a gun for protection');
+
+
+/*
+STRING METHODS AND EXAMPLES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+const plane = 'A320';
+console.log(plane[0]);
+
+console.log('B737'[0]);
+
+console.log(ariline.length);
+console.log('B737'.length);
+
+//string methods >>>>>>>>>>>>>>>>
+
+console.log(ariline.indexOf('r'));
+console.log(ariline.lastIndexOf('r'));
+console.log(ariline.indexOf('portugal'));
+
+// slice method
+console.log(ariline.slice(4));
+console.log(ariline.slice(4, 7));
+
+console.log(ariline.slice(0, ariline.indexOf(' ')));
+console.log(ariline.slice(ariline.lastIndexOf(' ') + 1));
+
+console.log(ariline.slice(-2));
+console.log(ariline.slice(1, -2));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if(s === 'B' || s === 'E'){
+    console.log('You got the middle seat');
+  }else{
+    console.log('You got lucky');
+  }
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+*/
