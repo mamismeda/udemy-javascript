@@ -691,5 +691,5 @@ delayed_departure
 //    const output = `${first}${second.replace(second[0], second[0].
 //     toUpperCase())}`;
 //     console.log(`${output.padEnd(20,)} ${'+'.repeat(i + 1)}`);
-  }
-})
+//   }
+// })
