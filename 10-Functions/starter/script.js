@@ -86,7 +86,7 @@ const transformer = function (str,fn) {
   */
 
 // Opposite of callbacks >>>>>>>>>>>>>>>>>>>>
-
+/*
  const greet = function(greeting){
     return function(name){
         console.log(`${greeting} ${name}`);
@@ -102,3 +102,58 @@ const transformer = function (str,fn) {
  //Challenge
 const gre = (hi) => (name) => console.log(`${hi} ${name}`);
 gre('Hey')('Alex');
+*/
+
+const lufthansa = {
+    airline: 'lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    // book : function()
+    book(flightNum,name){
+      console.log(`${name} booked a seat on ${this.airline} flight
+      ${this.iataCode} ${flightNum}`);
+      this.bookings.push({flight: `${this.iataCode}${flightNum}`,name})
+    },
+   
+};
+
+lufthansa.book(239, 'Jonas schmedtman');
+lufthansa.book(2635, 'Jonas smith');
+console.log(lufthansa);
+
+const eurowings = {
+    airline : 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+    
+}
+
+const book = lufthansa.book;
+//Does NOT work
+// book(23, 'Sarah Wiliams');
+
+// misanishnebeli funqcia >>>>>>>>>>>>>>>>>>>>>>>>>>>>> to this method
+//call method>>>>>>>>>
+
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss ={
+    airline : "swiss air lines",
+    iataCode : 'LX',
+    bookings: [],
+}
+
+book.call(swiss, 583, "Mary Cooper");
+console.log(swiss);
+
+//apply method
+const flightData = [583, 'George Cooper'];
+book.apply(swiss,flightData);
+console.log(swiss);
+
+//same
+book.call(swiss, ...flightData);
