@@ -271,3 +271,18 @@ document
 // registerNewAnswer(poll.question, poll.options);
 
 */
+
+const runOnce = function () {
+  console.log('this will never run again');
+};
+
+runOnce();
+
+// immidiatle function calling
+(function () {
+  console.log('this will never run again');
+})();
+
+
+(() => console.log('this will ALSO never run again'))();
+
