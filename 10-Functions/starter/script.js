@@ -103,18 +103,17 @@ const transformer = function (str,fn) {
 const gre = (hi) => (name) => console.log(`${hi} ${name}`);
 gre('Hey')('Alex');
 */
-
+/*
 const lufthansa = {
-    airline: 'lufthansa',
-    iataCode: 'LH',
-    bookings: [],
-    // book : function()
-    book(flightNum,name){
-      console.log(`${name} booked a seat on ${this.airline} flight
+  airline: 'lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book : function()
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight
       ${this.iataCode} ${flightNum}`);
-      this.bookings.push({flight: `${this.iataCode}${flightNum}`,name})
-    },
-   
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
 lufthansa.book(239, 'Jonas schmedtman');
@@ -122,11 +121,10 @@ lufthansa.book(2635, 'Jonas smith');
 console.log(lufthansa);
 
 const eurowings = {
-    airline : 'Eurowings',
-    iataCode: 'EW',
-    bookings: [],
-    
-}
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
 
 const book = lufthansa.book;
 //Does NOT work
@@ -141,19 +139,135 @@ console.log(eurowings);
 book.call(lufthansa, 239, 'Mary Cooper');
 console.log(lufthansa);
 
-const swiss ={
-    airline : "swiss air lines",
-    iataCode : 'LX',
-    bookings: [],
-}
+const swiss = {
+  airline: 'swiss air lines',
+  iataCode: 'LX',
+  bookings: [],
+};
 
-book.call(swiss, 583, "Mary Cooper");
+book.call(swiss, 583, 'Mary Cooper');
 console.log(swiss);
 
 //apply method
 const flightData = [583, 'George Cooper'];
-book.apply(swiss,flightData);
+book.apply(swiss, flightData);
 console.log(swiss);
 
 //same
 book.call(swiss, ...flightData);
+
+//Bind method
+// book.call(eurowings, 23, 'Sarah Williams');
+
+const bookEw = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookEX = book.bind(swiss);
+
+bookEw(23, 'Steven Williams');
+
+const bookEw23 = book.bind(eurowings, 23);
+bookEw23('Jonas Schmedtmann');
+bookEw23('Martha Cooper');
+
+//With Event Listeners
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+//Add vat =value => value + value * 0.23;
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+//  const greet = function(greeting){
+//     return function(name){
+//         console.log(`${greeting} ${name}`);
+//     }
+//  }
+
+//  const greeterHey = greet('Hey');
+//  greeterHey('Jonas');
+//  greeterHey('Steven');
+
+//  greet('Hello')('Jonas');
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+
+// const adder = function(rate){
+//     return function(value){
+//         return console.log(`${rate}, ${value}`);
+//     }
+// }
+
+// adder(null)(0.23)
+
+*/
+
+/*
+
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section!
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    //for answer
+    const answer = Number(
+      prompt(
+        `${this.question}\n ${this.options.join('\n')} \n(Write option nu,ber)`
+      )
+    );
+    console.log(answer);
+
+    //Register answer
+
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
+
+    this.displayResults();
+    this.displayResults('string');
+  },
+
+  displayResults(type = 'array'){
+      if(type === 'array'){
+          console.log(this.answers);
+      }else if (type === 'string'){
+          console.log(`Poll results are ${this.answers.join(', ')}`);
+      }
+  }
+};
+
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// console.log(answer);
+
+// poll.registerNewAnswer();
+
+// const registerNewAnswer = function(question, options){
+//     return prompt(`${question} \n ${options}`);
+// }
+// registerNewAnswer(poll.question, poll.options);
+
+*/
