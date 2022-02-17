@@ -350,12 +350,12 @@ const boardPassengers = function(n,wait){
 boardPassengers(100,3);
 */
 
-(function () {
-  const header = document.querySelector('h1');
-  header.style.color = 'red';
-  document.body.addEventListener("click", function(){
-    header.style.color = 'blue';
-  })
-  })();
+// (function () {
+//   const header = document.querySelector('h1');
+//   header.style.color = 'red';
+//   document.body.addEventListener("click", function(){
+//     header.style.color = 'blue';
+//   })
+//   })();
 
  
