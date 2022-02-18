@@ -174,3 +174,27 @@ currenciesUnique.forEach(function(value, _,map){
    console.log(`${value}: ${value}`);
 })
 */
+
+const dogsJulia = [3, 5, 2, 12, 7];
+const dogsKate = [4, 1, 15, 8, 3];
+
+const checkDogs = function(ages1,ages2){
+   const newJulia = dogsJulia.slice(1, -2);
+   const bothDogs = newJulia.concat(dogsKate);
+ 
+  bothDogs.forEach(function(el, index){
+    if(el < 3){
+      console.log(`Dog number ${index + 1} is an adult and is ${el}
+      years old`);
+    }else {
+      console.log(`Dog number ${index + 1} is siill a puppy`);
+    }
+ })
+ 
+}
+
+checkDogs(dogsJulia, dogsKate);
+
+
+
+
