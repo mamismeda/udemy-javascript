@@ -65,13 +65,9 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -104,7 +100,7 @@ console.log(letters); // does not mutate
 console.log(letters.join('-'));
 */ // simple array methods >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
+/*
 const arr = [23, 11, 64];
 console.log(arr[0]);
 console.log(arr.at(0));
@@ -115,3 +111,49 @@ console.log(arr.slice(-1)[0]);
 
 //new at method
 console.log(arr.at(-1));
+*/
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// first index parameter second current element of array!!!
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1} You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1} You withdre ${Math.abs(movement)}`);
+  }
+}
+
+console.log('------FOREACH -----');
+// first current element second index third whole array!!!
+movements.forEach(function (movement, i, arr) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1} You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1} You withdre ${Math.abs(movement)}`);
+  }
+});
+// 0: function(200)
+// 1: function(450)
+//2: function(400)
+// .... >>>>>>>>>>>>>>>>>>>>>>>>>>^^^^^^^^^
+*/
+
+
+//Map foreach method
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function(value, key, map){
+  console.log(`${key}: ${value}`);
+})
+
+
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function(value, _,map){
+   console.log(`${value}: ${value}`);
+})
