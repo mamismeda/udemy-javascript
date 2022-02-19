@@ -175,6 +175,8 @@ currenciesUnique.forEach(function(value, _,map){
 })
 */
 
+/*
+
 const dogsJulia = [3, 5, 2, 12, 7];
 const dogsKate = [4, 1, 15, 8, 3];
 
@@ -194,7 +196,37 @@ const checkDogs = function(ages1,ages2){
 }
 
 checkDogs(dogsJulia, dogsKate);
+*/
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const eurToUsd = 1.1;
 
+// const movementsUSD = movements.map(function(mov){
+//    return mov * eurToUsd;
+// });
+const movemUSD = movements.map(mov => mov * eurToUsd);
+console.log(movemUSD);
+console.log(movements);
 
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * eurToUsd);
+}
+console.log(movementsUSDfor);
+
+const movementsDescr = movements.map((mov, i) => 
+  // if (mov > 0) {
+
+  `Movement ${i + 1} :  You ${mov > 0 ? 'deposited' : 'withdrew'}
+   ${Math.abs(
+    mov
+  )}`
+
+  //   return `Movement ${i + 1} You deposited ${mov}`;
+  // } else {
+  //   return `Movement ${i + 1} You withdrew ${Math.abs(mov)}`;
+  // }
+);
+
+console.log(movementsDescr);
