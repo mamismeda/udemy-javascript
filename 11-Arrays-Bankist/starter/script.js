@@ -294,4 +294,24 @@ const max = movements.reduce((acc, mov) => {
 console.log(max);
 */
 
+const agesDog = [5, 2, 4, 1, 15, 8, 3];
 
+const calcAvarageHumanAge = function (age) {
+  const humanAge = age.map(dogAge => {
+    if (dogAge <= 2) {
+      return 2 * dogAge;
+    } else {
+      return 16 + dogAge * 4;
+    }
+  });
+  const filtered = humanAge.filter(cur => cur > 18);
+  console.log(filtered);
+  const allAge = filtered.reduce((accum,curr) =>
+   accum + curr,0) /  filtered.length;
+
+   return allAge;
+  
+};
+
+const exm1 = calcAvarageHumanAge(agesDog);
+console.log(exm1);
