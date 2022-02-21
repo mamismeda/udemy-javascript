@@ -340,13 +340,13 @@ const exm1 = calcAvarageHumanAge(agesDog);
 console.log(exm1);
 */
 
-const calcHuman = ages =>
-  ages
-    .map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
-    .filter(cur => cur >= 18)
-    .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
+// const calcHuman = ages =>
+//   ages
+//     .map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+//     .filter(cur => cur >= 18)
+//     .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
 
-console.log(calcHuman([16, 6, 10, 5, 6, 1, 4]));
+// console.log(calcHuman([16, 6, 10, 5, 6, 1, 4]));
 
 //PIPELINE CHaining
 // const eurToUsd = 1.1;
@@ -355,3 +355,21 @@ console.log(calcHuman([16, 6, 10, 5, 6, 1, 4]));
 //   .map(mov => mov * eurToUsd)
 //   .reduce((acc, mov) => acc + mov, 0);
 //   console.log(totalDepositUSD);
+
+
+// find method to search a object or array element !!!
+/*
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === `Jessica Davis`)
+console.log(account);
+
+for(const acc of accounts){
+  if ( acc.owner === `Sarah Smith`)
+  console.log(acc);
+}
+*/
