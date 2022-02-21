@@ -86,6 +86,29 @@ const calcDisplayBalance = function (movements) {
 
 calcDisplayBalance(account1.movements);
 
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}EUR`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}EUR`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}EUR`;
+};
+calcDisplaySummary(account1.movements);
+
 const user = 'Steven Thomas Williams'; //stw
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -97,13 +120,12 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
-console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 /*
@@ -294,6 +316,8 @@ const max = movements.reduce((acc, mov) => {
 console.log(max);
 */
 
+/*
+
 const agesDog = [5, 2, 4, 1, 15, 8, 3];
 
 const calcAvarageHumanAge = function (age) {
@@ -312,6 +336,22 @@ const calcAvarageHumanAge = function (age) {
    return allAge;
   
 };
-
 const exm1 = calcAvarageHumanAge(agesDog);
 console.log(exm1);
+*/
+
+const calcHuman = ages =>
+  ages
+    .map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+    .filter(cur => cur >= 18)
+    .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
+
+console.log(calcHuman([16, 6, 10, 5, 6, 1, 4]));
+
+//PIPELINE CHaining
+// const eurToUsd = 1.1;
+// const totalDepositUSD = movements
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * eurToUsd)
+//   .reduce((acc, mov) => acc + mov, 0);
+//   console.log(totalDepositUSD);
