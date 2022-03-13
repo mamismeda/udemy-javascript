@@ -134,6 +134,8 @@ nav.addEventListener('mouseout', handlerHover.bind(1));
 
 
 // Sticky navigation
+
+/*
 const initialCoords = section1.getBoundingClientRect();
 console.log(initialCoords);
 
@@ -145,6 +147,28 @@ window.addEventListener('scroll', function(e){
     nav.classList.remove('sticky');
   }
 });
+*/
+
+// sticky navigation : intersection observer API
+
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
+const stickyNav = function(entries) {
+  const [entry] = entries;
+  console.log(entry);
+  if(!entry.isIntersecting)  nav.classList.add('sticky');
+  else ( nav.classList.remove('sticky'));
+ 
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root : null,
+  treshold : 0,
+  rootMargin : `${navHeight}px`,
+});
+headerObserver.observe(header);
 
 ////////////////////////////////////////////////////
 
@@ -309,3 +333,17 @@ console.log(h1.parentElement.children);
   if(element !== h1) element.style.transform = 'scale(0.5)'
 });
 */
+
+// const obsCallback = function(entries, observer){
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   })
+// };
+
+// const obsOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// }
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
