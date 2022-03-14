@@ -297,25 +297,6 @@ const slider = function () {
 slider();
 
 
-// Event handlers
-btnRight.addEventListener('click', nextSlide);
-btnLeft.addEventListener('click', prevSlide);
-
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'ArrowLeft') prevSlide();
-  e.key === 'ArrowRight' && nextSlide();
-});
-
-dotContainer.addEventListener('click', function (e) {
-  if (e.target.classList.contains('dots__dot')) {
-    const { slide } = e.target.dataset;
-    goToSlide(slide);
-    activateDot(slide);
-  }
-});
-
-slider();
-
 ////////////////////////////////////////////////////
 
 /*
@@ -493,3 +474,17 @@ console.log(h1.parentElement.children);
 
 // const observer = new IntersectionObserver(obsCallback, obsOptions);
 // observer.observe(section1);
+
+document.addEventListener('DOMContentLoaded', function(e){
+  console.log("html parsend and dom tree built", e);
+});
+
+window.addEventListener('load',function(e){
+  console.log('Page fully loaded', e);
+});
+
+// window.addEventListener('beforeunload', function(e){
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// })
