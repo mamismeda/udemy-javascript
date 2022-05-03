@@ -112,6 +112,13 @@ class PersonCl {
     return 2037 - this.birthYear;
   }
 
+  //static method 
+
+  static hey(){
+    console.log(`hey here `);
+    console.log(this);
+  }
+
 }
 const jessica = new PersonCl('Jessica', 1996);
 console.log(jessica);
@@ -147,3 +154,5 @@ console.log(account.latest);
 account.latest = 50;
 
 console.log(account.movements);
+
+PersonCl.hey();
