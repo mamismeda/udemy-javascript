@@ -136,6 +136,8 @@ jessica.greet();
 // 3. classes are executed in strict mode
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+/*
 const account = {
   owner: 'jonas',
   movements: [200, 530, 120, 300],
@@ -156,3 +158,64 @@ account.latest = 50;
 console.log(account.movements);
 
 PersonCl.hey();
+*/
+
+const PersonProto = {
+  calcAge(){
+    console.log(2037- this.birthYear);
+  },
+
+  init(firstName,birthYear){
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+
+  }
+};
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = "Steven";
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah',1979);
+sarah.calcAge();
+
+
+
+// 2 codding chellenge in OOP ES6 method
+
+class CarCl {
+   constructor (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+accelerate() {
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed}`);
+};
+
+brake() {
+  this.speed -= 5;
+  console.log(`${this.make} is going at ${this.speed}`);
+}
+
+get speedUS(){
+  return this.speed / 1.6;
+}
+
+set speedUS(speed){
+  this.speed = speed * 1.6;
+}
+}
+
+const ford = new CarCl('Ford', 120);
+console.log(ford.speedUS);
+ford.accelerate();
+ford.accelerate();
+ford.brake();
+ford.speedUS = 50;
+
