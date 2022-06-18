@@ -348,33 +348,47 @@ jay.calcAge();
 
 */
 
+
+// Public fields
+// Private fields
+// Public methods
+// Private methods
 class Account {
+  // 1) Public fields(instances)!!!
+  locale = navigator.language;
+  
+
+  // 2) Private fields(instances)!!!
+  #movement = [];
+  #pin;
+
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this._pin = pin;
+    this.#pin = pin;
     //Protected property
-    this._movement = [];
-    this.locale = navigator.language;
+    //this._movement = [];
+    //this.locale = navigator.language;
 
     console.log(`Thanks for opening an acoount, ${owner}`);
   }
 
+  // 3) public methods
+
   //Public interface
   getMovements(){
-    return this._movement;
+    return this.#movement;
   }
 
   deposit(val){
-    this._movement.push(val);
+    this.#movement.push(val);
   }
   withdraw(val){
     this.deposit(-val);
   }
 
-  _approveLoan(val){
-    return true;
-  }
+ 
 
   requestLoan(val){
     if(this._approveLoan(val)){
@@ -382,6 +396,12 @@ class Account {
       console.log(`Loan approved`);
     }
   }
+
+  // 4) Private methods
+  _approveLoan(val){
+    return true;
+  }
+
 }
 
 const account1 = new Account('Jonas', 'Eur', 1111);
@@ -392,8 +412,12 @@ console.log(account1);
 account1.deposit(250);
 account1.withdraw(140);
 account1.requestLoan(1000);
-account1._approveLoan(1000);
+// account1.#approveLoan(10);00
 console.log(account1.getMovements());
 
 console.log(account1);
-console.log(account1.pin);
+//console.log(account1.pin);
+
+//console.log(account1.#movement);
+//console.log(account1.#pin);
+//console.log(account1.#approveLoan(1000));
