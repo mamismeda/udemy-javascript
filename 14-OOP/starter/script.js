@@ -258,7 +258,7 @@ Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 
 */
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -298,3 +298,102 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
+
+*/
+
+/*
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce(){
+    console.log(`My name is ${this.fullName} and i study ${this.course}`);
+  }
+}
+
+const martha = new StudentCl('Martha jones', 2012,'computer science');
+martha.introduce();
+martha.calcAge();
+*/
+
+/*
+const PersonProto = {
+  calcAge(){
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName,birthYear){
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function(firstName,birthYear,course){
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+}
+
+StudentProto.introduce = function(){
+  console.log(`My name is ${this.fullName}`);
+}
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'computer science');
+jay.calcAge();
+
+*/
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this._pin = pin;
+    //Protected property
+    this._movement = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an acoount, ${owner}`);
+  }
+
+  //Public interface
+  getMovements(){
+    return this._movement;
+  }
+
+  deposit(val){
+    this._movement.push(val);
+  }
+  withdraw(val){
+    this.deposit(-val);
+  }
+
+  _approveLoan(val){
+    return true;
+  }
+
+  requestLoan(val){
+    if(this._approveLoan(val)){
+      this.deposit(val);
+      console.log(`Loan approved`);
+    }
+  }
+}
+
+const account1 = new Account('Jonas', 'Eur', 1111);
+console.log(account1);
+
+// account1._movement.push(250);
+// account1._movement.push(-140);
+account1.deposit(250);
+account1.withdraw(140);
+account1.requestLoan(1000);
+account1._approveLoan(1000);
+console.log(account1.getMovements());
+
+console.log(account1);
+console.log(account1.pin);
